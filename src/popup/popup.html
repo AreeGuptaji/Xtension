@@ -1,0 +1,132 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>X Reply Assistant</title>
+    <link rel="stylesheet" href="popup.css" />
+  </head>
+  <body>
+    <div class="popup-container">
+      <header class="popup-header">
+        <h1>🤖 X Reply Assistant</h1>
+        <p class="subtitle">AI-powered response generation for X (Twitter)</p>
+      </header>
+
+      <main class="popup-main">
+        <div class="status-section">
+          <div class="status-indicator" id="statusIndicator">
+            <span class="status-dot" id="statusDot"></span>
+            <span class="status-text" id="statusText">Checking status...</span>
+          </div>
+        </div>
+
+        <div class="api-key-section">
+          <h2>🔑 OpenAI API Configuration</h2>
+          <div class="input-group">
+            <label for="apiKeyInput">OpenAI API Key:</label>
+            <div class="input-wrapper">
+              <input
+                type="password"
+                id="apiKeyInput"
+                placeholder="sk-..."
+                autocomplete="off"
+                spellcheck="false"
+              />
+              <button
+                type="button"
+                id="toggleVisibilityBtn"
+                class="toggle-btn"
+                title="Toggle visibility"
+              >
+                👁️
+              </button>
+            </div>
+            <small class="input-help">
+              Get your API key from
+              <a href="https://platform.openai.com/api-keys" target="_blank"
+                >OpenAI Platform</a
+              >
+            </small>
+          </div>
+          <div class="button-group">
+            <button id="saveApiKeyBtn" class="btn btn-primary">
+              Save API Key
+            </button>
+            <button id="clearApiKeyBtn" class="btn btn-secondary">Clear</button>
+          </div>
+        </div>
+
+        <div class="features-section">
+          <h2>✨ Features</h2>
+          <div class="feature-list">
+            <div class="feature-item">
+              <span class="feature-icon">😊</span>
+              <div class="feature-content">
+                <h3>Casual Responses</h3>
+                <p>Friendly, conversational replies with emojis</p>
+              </div>
+            </div>
+            <div class="feature-item">
+              <span class="feature-icon">💼</span>
+              <div class="feature-content">
+                <h3>Professional Responses</h3>
+                <p>Business-appropriate, formal replies</p>
+              </div>
+            </div>
+            <div class="feature-item">
+              <span class="feature-icon">❓</span>
+              <div class="feature-content">
+                <h3>Thoughtful Questions</h3>
+                <p>Engaging follow-up questions</p>
+              </div>
+            </div>
+          </div>
+        </div>
+
+        <div class="usage-section">
+          <h2>📖 How to Use</h2>
+          <ol class="usage-steps">
+            <li>
+              Visit <a href="https://x.com" target="_blank">x.com</a> or
+              <a href="https://twitter.com" target="_blank">twitter.com</a>
+            </li>
+            <li>Look for the AI response buttons below tweets</li>
+            <li>Click the type of response you want to generate</li>
+            <li>Edit the generated response if needed</li>
+            <li>Copy or use the response</li>
+          </ol>
+        </div>
+
+        <div class="stats-section" id="statsSection" style="display: none">
+          <h2>📊 Usage Stats</h2>
+          <div class="stats-grid">
+            <div class="stat-item">
+              <span class="stat-value" id="totalRequests">0</span>
+              <span class="stat-label">Total Requests</span>
+            </div>
+            <div class="stat-item">
+              <span class="stat-value" id="todayRequests">0</span>
+              <span class="stat-label">Today</span>
+            </div>
+          </div>
+        </div>
+      </main>
+
+      <footer class="popup-footer">
+        <div class="footer-links">
+          <a href="#" id="helpLink">Help</a>
+          <a href="#" id="privacyLink">Privacy</a>
+          <a href="#" id="feedbackLink">Feedback</a>
+        </div>
+        <div class="version">v1.0.0</div>
+      </footer>
+
+      <div class="notification" id="notification" style="display: none">
+        <span class="notification-text" id="notificationText"></span>
+      </div>
+    </div>
+
+    <script src="popup.js"></script>
+  </body>
+</html>

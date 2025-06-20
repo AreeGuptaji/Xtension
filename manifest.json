@@ -1,10 +1,46 @@
 {
-  "name": "Hello Extensions of the world",
-  "description": "Base level extension",
-  "version": "1.0",
+  "name": "X Reply Assistant",
+  "description": "AI-powered response generation for X (Twitter) with OpenAI GPT-3.5-turbo",
+  "version": "1.0.0",
   "manifest_version": 3,
+  "permissions": ["storage", "activeTab", "scripting"],
+  "host_permissions": [
+    "https://x.com/*",
+    "https://twitter.com/*",
+    "https://api.openai.com/*"
+  ],
+  "background": {
+    "service_worker": "src/background/background.js"
+  },
+  "content_scripts": [
+    {
+      "matches": ["https://x.com/*", "https://twitter.com/*"],
+      "js": ["src/content/content.js"],
+      "css": ["src/content/content.css"]
+    }
+  ],
   "action": {
-    "default_popup": "hello.html",
-    "default_icon": "icon.png"
-  }
+    "default_popup": "src/popup/popup.html",
+    "default_icon": {
+      "16": "icon.png",
+      "32": "icon.png",
+      "48": "icon.png",
+      "128": "icon.png"
+    }
+  },
+  "icons": {
+    "16": "icon.png",
+    "32": "icon.png",
+    "48": "icon.png",
+    "128": "icon.png"
+  },
+  "content_security_policy": {
+    "extension_pages": "script-src 'self'; object-src 'self'"
+  },
+  "web_accessible_resources": [
+    {
+      "resources": ["src/content/*", "assets/*"],
+      "matches": ["https://x.com/*", "https://twitter.com/*"]
+    }
+  ]
 }
